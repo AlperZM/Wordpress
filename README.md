@@ -2,6 +2,7 @@
 <p>Default wordpress theme.</p>
 <h2>Resources</h2>
 <ol>
+  <li>https://codex.wordpress.org/Theme_Development</li>
 <li>https://developer.wordpress.org/themes/getting-started/</li>
 <li>https://developer.wordpress.org/reference/</li>
   <li>https://codex.wordpress.org/Template_Tags</li>
