@@ -9,7 +9,7 @@ function segesOnesetup() {
     'primary'   => __( 'Primary Menu', 'segesOne' ),
     'secondary' => __( 'Secondary Menu', 'segesOne' )
 ) );
-
+	
 // languages
   load_theme_textdomain( 'segesOne', get_template_directory() . '/languages' );
 
@@ -66,3 +66,10 @@ function segesOnesetup() {
 }
   endif;
 add_action( 'after_setup_theme', 'segesOnesetup' );
+
+
+function add_theme_scripts() {
+	wp_enqueue_style( 'style', get_stylesheet_uri() );
+	wp_enqueue_script( 'script', get_template_directory_uri() . '/js/script.js',  1.1, true,  'strategy'  => 'defer', );
+}
+add_action( 'wp_enqueue_scripts', 'add_theme_scripts' );
