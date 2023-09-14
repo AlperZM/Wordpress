@@ -11,3 +11,6 @@
 <li>CODING STANDARTS: https://developer.wordpress.org/coding-standards/wordpress-coding-standards/</li>
 <li>DESING AND LAYOUT: https://codex.wordpress.org/Site_Design_and_Layout</li>
 </ol>
+
+<br>
+https://fullsiteediting.com/block-theme-generator/
