@@ -1,5 +1,6 @@
 // index php
 <?php get_header(); ?>
+<?php get_template_part( 'featured-content' ); ?>
 
-
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>
