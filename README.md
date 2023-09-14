@@ -1,6 +1,7 @@
 <h1>Wordpress themes</h1>
 <p>Default wordpress theme.</p>
 <h2>Resources</h2>
+<h3>https://learn.wordpress.org/</h3>
 <ol>
   <li>https://codex.wordpress.org/Theme_Development</li>
   <li>https://developer.wordpress.org/themes/getting-started/setting-up-a-development-environment/#wp-debug</li>
