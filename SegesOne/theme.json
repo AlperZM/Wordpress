@@ -1,1 +1,68 @@
-
+{
+    "version": 1,
+    "settings": {
+        "color": {
+            "palette": [
+                {
+                    "name": "Black",
+                    "slug": "black",
+                    "color": "#000000"
+                },
+              {
+                "name" : "Red",
+                "slug" : "red",
+                "color": "#ff0000",
+              },
+              {
+                "name" : "Green",
+                "slug" : "green",
+                "color": "#00ff00",
+              },
+              {
+                "name" : "White",
+                "slug" : "white",
+                "color": "#fff",
+              },
+                {
+                        "slug": "purple",
+                        "color": "#D1D1E4",
+                        "name": "Purple"
+                    },
+                    {
+                        "slug": "yellow",
+                        "color": "#EEEADD",
+                        "name": "Yellow"
+                    }
+                ],
+                "gradients": [
+                    {
+                        "slug": "purple-to-yellow",
+                        "gradient": "linear-gradient(160deg, var(--wp--preset--color--purple), var(--wp--preset--color--yellow))",
+                        "name": "Purple to Yellow"
+                    }
+                ],
+                "duotone": [
+                    {
+                        "slug": "purple-and-yellow",					
+                        "colors": [ "#D1D1E4", "#EEEADD" ],
+                        "name": "Purple and yellow"
+                    }
+            ]
+        }
+    },
+  "typography": {
+			"fontSizes": [
+				{
+					"slug": "small",
+					"size": "1rem",
+					"name": "Small"
+				},
+				{
+					"slug": "medium",
+					"size": "1.5rem",
+					"name": "medium"
+				}
+			]
+		}
+	}
+}
