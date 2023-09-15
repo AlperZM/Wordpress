@@ -3,6 +3,7 @@
 <h2>Resources</h2>
 <h3>https://learn.wordpress.org/</h3>
 <h3>https://developer.wordpress.org/themes/basics/tools-resources/#training-material</h3>
+<h3>https://developer.wordpress.org/block-editor/</h3>
 <br>
 <ol>
   <li>https://codex.wordpress.org/Theme_Development</li>
