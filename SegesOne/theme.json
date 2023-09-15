@@ -2,8 +2,8 @@
     "version": 1,
     "settings": {
 "layout" : {
-	"contentSize" : "85%";
-	"wideSize" : "100%";
+	"contentSize" : "85%",
+	"wideSize" : "100%",
 },
         "color": {
             "palette": [
