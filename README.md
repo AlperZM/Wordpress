@@ -18,3 +18,5 @@
 
 <br>
 https://fullsiteediting.com/block-theme-generator/
+<br>
+https://fullsiteediting.com/lessons/global-styles/
