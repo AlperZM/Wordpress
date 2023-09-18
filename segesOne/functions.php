@@ -9,6 +9,24 @@ function segesOnesetup() {
     'primary'   => __( 'Primary Menu', 'segesOne' ),
     'secondary' => __( 'Secondary Menu', 'segesOne' )
 ) );
+function segesOne_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Primary Sidebar', 'segesOne' ),
+		'id'            => 'sidebar-1',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Secondary Sidebar', 'segesOne' ),
+		'id'            => 'sidebar-2',
+		'before_widget' => '<ul><li id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</li></ul>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+}
 	
 // languages
   load_theme_textdomain( 'segesOne', get_template_directory() . '/languages' );
@@ -18,7 +36,18 @@ function segesOnesetup() {
 
   // post thumbnails
   add_theme_support( 'post-thumbnails' );
-
+function themename_custom_logo_setup() {
+	$defaults = array(
+		'height'               => 100,
+		'width'                => 400,
+		'flex-height'          => true,
+		'flex-width'           => true,
+		'header-text'          => array( 'site-title', 'site-description' ),
+		'unlink-homepage-logo' => true, 
+	);
+	add_theme_support( 'custom-logo', $defaults );
+}
+add_action( 'after_setup_theme', 'themename_custom_logo_setup' );
   /**Add post-formats support.*/
 	                add_theme_support(
 	                        'post-formats',
