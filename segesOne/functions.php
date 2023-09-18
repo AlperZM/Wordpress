@@ -9,6 +9,14 @@ function segesOnesetup() {
     'primary'   => __( 'Primary Menu', 'segesOne' ),
     'secondary' => __( 'Secondary Menu', 'segesOne' )
 ) );
+
+function wporg_image_editor_output_format( $formats ) {
+    $formats['image/jpg'] = 'image/webp';
+ 
+    return $formats;
+}
+add_filter( 'image_editor_output_format', 'wporg_image_editor_output_format' );
+	
 function segesOne_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'Primary Sidebar', 'segesOne' ),
