@@ -45,6 +45,19 @@ function segesOnesetup() {
 	                // Add support for full and wide align images.
 	                add_theme_support( 'align-wide' );
 
+function segesOne_custom_header_setup() {
+	$args = array(
+		'default-image'      => get_template_directory_uri() . 'img/default-image.jpg',
+		'default-text-color' => '000',
+		'width'              => 1000,
+		'height'             => 250,
+		'flex-width'         => true,
+		'flex-height'        => true,
+	);
+	add_theme_support( 'custom-header', $args );
+}
+add_action( 'after_setup_theme', 'segesOne_custom_header_setup' );
+
   /**
 	 * Registers widget area. @since Twenty Twenty-One 1.0
  @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
