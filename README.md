@@ -20,3 +20,5 @@
 https://fullsiteediting.com/block-theme-generator/
 <br>
 https://fullsiteediting.com/lessons/global-styles/
+<br>
+https://fullsiteediting.com/lessons/how-to-add-blocks-to-user-created-templates/
