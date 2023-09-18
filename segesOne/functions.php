@@ -44,6 +44,13 @@ function segesOne_widgets_init() {
 
   // post thumbnails
   add_theme_support( 'post-thumbnails' );
+	the_post_thumbnail(); // Without parameter ->; Thumbnail
+the_post_thumbnail( 'thumbnail' ); // Thumbnail (default 150px x 150px max)
+the_post_thumbnail( 'medium' ); // Medium resolution (default 300px x 300px max)
+the_post_thumbnail( 'medium_large' ); // Medium-large resolution (default 768px x no height limit max)
+the_post_thumbnail( 'large' ); // Large resolution (default 1024px x 1024px max)
+the_post_thumbnail( 'full' ); // Original image resolution (unmodified)
+the_post_thumbnail( array( 100, 100 ) ); // Other resolutions (height, width)
 function themename_custom_logo_setup() {
 	$defaults = array(
 		'height'               => 100,
