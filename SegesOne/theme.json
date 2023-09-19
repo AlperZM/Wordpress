@@ -1,4 +1,5 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
         "version": 2,
 	"settings": {
 		"layout": {
@@ -100,5 +101,13 @@ background: linear-gradient(90deg, rgba(34,40,49,1) 0%, rgba(57,62,70,1) 20%, rg
 			"background": "var(--wp--preset--color--primary)",
 			"text": "var(--wp--preset--color--fourth)"
 		}
+	},
+
+	"templateParts": [
+	{
+		"name": "header",
+		"area": "header",
+		"title": "Header"
 	}
+]
 }
