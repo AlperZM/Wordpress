@@ -4,8 +4,32 @@
 	"settings": {
     "color": {
       "palette": [
-        
-      ],
+        {
+				"slug": "primary",
+				"color": "#222831",
+				"name": "Primary",
+			},
+			{
+				"slug": "secondary",
+				"color": "#393E46",
+				"name": "Secondary",
+			},
+			{
+				"slug": "third",
+				"color": "#00ADB5",
+				"name": "Third",
+			},
+			{
+				"slug": "fourth",
+				"color": "#EEEEEE",
+				"name": "Fourth",
+			},
+		],
+		"gradients" : [
+			"slug": "default-gradient",
+			"gradient": "linear-gradient(90deg, rgba(34,40,49,1) 0%, rgba(57,62,70,1) 20%, rgba(0,173,181,1) 100%); ",
+			"name": "Default-Gradient",
+		],
     },
 	},
 
