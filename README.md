@@ -19,6 +19,6 @@
 <br>
 https://fullsiteediting.com/block-theme-generator/
 <br>
-https://fullsiteediting.com/lessons/global-styles/
+https://fullsiteediting.com/lessons/theme-json-elements/
 <br>
 https://fullsiteediting.com/lessons/how-to-add-blocks-to-user-created-templates/
