@@ -1,15 +1,25 @@
 /*
 Theme Name: Seges One
-Theme URI: https://seges.dev
 Author: Seges
-Author URI: https://seges.dev
-Description: New Block Theme
-Tags: amp, seo, responsive, one columni onepage, landing page, portfolio
-Version: 0.0.1,
-Requires at least: 5.0
-Tested up to: 5.4
-Requires PHP: 7.0
+Author URI: https://seges.web.tr
+Theme URI: https://seges.web.tr
+Description: One page portfolio theme.
+Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, style-variations, accessibility-ready, blog, portfolio, news
+Text Domain: seges-one
+Requires at least: 6.1
+Requires PHP: 7.4
+Tested up to: 6.2
+Version: 1.0.0
+
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: seges-one
 */
+
+/* set roots */
+:root{
+  --primary: #EFF3F0;
+  --secondary: #9CAFA3;
+  --third: #D88C48;
+  --fourth: #9AB973;
+  --fifth: #425756;
+}
