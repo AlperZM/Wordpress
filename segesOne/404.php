@@ -1,27 +1,19 @@
 <?php
-/**
- * The template for displaying 404 pages (Not Found)
- */
+/* The template for displaying 404 pages (not found) */
+
 get_header();
-<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
-
-			<header class="page-header">
-				<h1 class="page-title"><?php _e( 'Not Found', 'twentythirteen' ); ?></h1>
-			</header>
-
-			<div class="page-wrapper">
-				<div class="page-content">
-					<h2><?php _e( 'This is somewhat embarrassing, isn’t it?', 'twentythirteen' ); ?></h2>
-					<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'twentythirteen' ); ?></p>
-
-					<?php get_search_form(); ?>
-				</div><!-- .page-content -->
-			</div><!-- .page-wrapper -->
-
-		</div><!-- #content -->
-	</div><!-- #primary -->
-
-get_sidebar();
-get_footer();
 ?>
+
+	<header class="page-header alignwide">
+		<h1 class="page-title"><?php esc_html_e( 'Sorry about nothing here', 'segesone' ); ?></h1>
+	</header><!-- .page-header -->
+
+	<div class="error-404 not-found default-max-width">
+		<div class="page-content">
+			<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'segesone' ); ?></p>
+			<?php get_search_form(); ?>
+		</div><!-- .page-content -->
+	</div><!-- .error-404 -->
+
+<?php
+get_footer();
