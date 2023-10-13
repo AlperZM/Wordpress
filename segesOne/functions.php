@@ -1,7 +1,5 @@
 <?php
-/**
- * Functions and definitions
- */
+/* Functions and definitions */
 
 // This theme requires WordPress 5.3 or later.
 if ( version_compare( $GLOBALS['wp_version'], '5.3', '<' ) ) {
@@ -9,40 +7,21 @@ if ( version_compare( $GLOBALS['wp_version'], '5.3', '<' ) ) {
 }
 
 if ( ! function_exists( 'seges_one_setup' ) ) {
-	/**
-	 * Sets up theme defaults and registers support for various WordPress features.
-	 */
+	/* Sets up theme defaults and registers support for various WordPress features. */
 	function seges_one_setup() {
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
-
-		/*
-		 * Let WordPress manage the document title.
-		 * This theme does not use a hard-coded <title> tag in the document head,
-		 */
+		
+		/* Let WordPress manage the document title. */
 		add_theme_support( 'title-tag' );
 
-		/**
-		 * Add post-formats support.
-		 */
+		/* Add post-formats support. */
 		add_theme_support(
 			'post-formats',
-			array(
-				'link',
-				'aside',
-				'gallery',
-				'image',
-				'quote',
-				'status',
-				'video',
-				'audio',
-				'chat',
-			)
+			array('link','aside','gallery','image','quote','status','video','audio','chat',	)
 		);
 
-		/*
-		 * Enable support for Post Thumbnails on posts and pages.
-		 */
+		/* Enable support for Post Thumbnails on posts and pages. */
 		add_theme_support( 'post-thumbnails' );
 		set_post_thumbnail_size( 1568, 9999 );
 
@@ -50,7 +29,7 @@ if ( ! function_exists( 'seges_one_setup' ) ) {
 			array(
 				'primary' => esc_html__( 'Primary menu', 'segesone' ),
 				'footer'  => esc_html__( 'Secondary menu', 'segesone' ),
-				'social'  => esc_html__( 'Social menu', 'segesone' ),
+				'footer'  => esc_html__( 'Social menu', 'segesone' ),
 			)
 		);
 
@@ -60,20 +39,10 @@ if ( ! function_exists( 'seges_one_setup' ) ) {
 		 */
 		add_theme_support(
 			'html5',
-			array(
-				'comment-form',
-				'comment-list',
-				'gallery',
-				'caption',
-				'style',
-				'script',
-				'navigation-widgets',
-			)
+			array('comment-form','comment-list','gallery','caption','style','script','navigation-widgets',)
 		);
 
-		/*
-		 * Add support for core custom logo.
-		 */
+		/* Add support for core custom logo. */
 		$logo_width  = 300;
 		$logo_height = 100;
 
@@ -100,18 +69,12 @@ if ( ! function_exists( 'seges_one_setup' ) ) {
 		// Add support for editor styles.
 		add_theme_support( 'editor-styles' );
 		$background_color = get_theme_mod( 'background_color', 'D1E4DD' );
-		if ( 127 > Seges_One_Custom_Colors::get_relative_luminance_from_hex( $background_color ) ) {
+		if ( 127 > seges_One_Custom_Colors::get_relative_luminance_from_hex( $background_color ) ) {
 			add_theme_support( 'dark-editor-style' );
 		}
 
 		$editor_stylesheet_path = './assets/css/style-editor.css';
-
-		// Note, the is_IE global variable is defined by WordPress and is used
-		// to detect if the current browser is internet explorer.
 		global $is_IE;
-		if ( $is_IE ) {
-			$editor_stylesheet_path = './assets/css/ie-editor.css';
-		}
 
 		// Enqueue editor styles.
 		add_editor_style( $editor_stylesheet_path );
@@ -287,11 +250,7 @@ if ( ! function_exists( 'seges_one_setup' ) ) {
 			)
 		);
 
-		/*
-		* Adds starter content to highlight the theme on fresh sites.
-		* This is done conditionally to avoid loading the starter content on every
-		* page load, as it is a one-off operation only needed once in the customizer.
-		*/
+		/* Adds starter content to highlight the theme on fresh sites.*/
 		if ( is_customize_preview() ) {
 			require get_template_directory() . '/inc/starter-content.php';
 			add_theme_support( 'starter-content', seges_one_get_starter_content() );
@@ -315,11 +274,8 @@ if ( ! function_exists( 'seges_one_setup' ) ) {
 }
 add_action( 'after_setup_theme', 'seges_one_setup' );
 
-/**
- * Registers widget area.
- */
+/* Registers widget area. */
 function seges_one_widgets_init() {
-
 	register_sidebar(
 		array(
 			'name'          => esc_html__( 'Footer', 'segesone' ),
@@ -334,66 +290,64 @@ function seges_one_widgets_init() {
 }
 add_action( 'widgets_init', 'seges_one_widgets_init' );
 
-/**
- * Sets the content width in pixels, based on the theme's design and stylesheet.
- */
+/* Sets the content width in pixels, based on the theme's design and stylesheet. */
 function seges_one_content_width() {
-	// This variable is intended to be overruled from themes.
 	$GLOBALS['content_width'] = apply_filters( 'seges_one_content_width', 750 );
 }
 add_action( 'after_setup_theme', 'seges_one_content_width', 0 );
 
-/**
- * Enqueues scripts and styles.
- */
+/* Enqueues scripts and styles. */
 function seges_one_scripts() {
-	// Note, the is_IE global variable is defined by WordPress and is used
-	// to detect if the current browser is internet explorer.
 	global $wp_scripts;
-	// If not IE, use the standard stylesheet.
-	wp_enqueue_style( 'seges-one-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get( 'Version' ) );
 
+	wp_enqueue_style( 'seges-one-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get( 'Version' ) );
 
 	// RTL styles.
 	wp_style_add_data( 'seges-one-style', 'rtl', 'replace' );
+
+	// Print styles.
+	wp_enqueue_style( 'seges-one-print-style', get_template_directory_uri() . '/assets/css/print.css', array(), wp_get_theme()->get( 'Version' ), 'print' );
 
 	// Threaded comment reply styles.
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-}
 
+	// Main navigation scripts.
+	if ( has_nav_menu( 'primary' ) ) {
+		wp_enqueue_script(
+			'seges-one-primary-navigation-script',
+			get_template_directory_uri() . '/assets/js/primary-navigation.js',
+			array( 'seges-one-ie11-polyfills' ),
+			wp_get_theme()->get( 'Version' ),
+			true
+		);
+	}
+
+	// Responsive embeds script.
+	wp_enqueue_script(
+		'seges-one-responsive-embeds-script',
+		get_template_directory_uri() . '/assets/js/responsive-embeds.js',
+		array( 'seges-one-ie11-polyfills' ),
+		wp_get_theme()->get( 'Version' ),
+		true
+	);
+}
 add_action( 'wp_enqueue_scripts', 'seges_one_scripts' );
 
-/**
- * Enqueues block editor script.
- * @return void
- */
+/* Enqueues block editor script. */
 function segesone_block_editor_script() {
-
-	wp_enqueue_script( 'segesone-editor', get_theme_file_uri( '/assets/js/editor.js' ), array( 'wp-blocks', 'wp-dom' ), wp_get_theme()->get( 'Version' ), true );
+wp_enqueue_script( 'segesone-editor', get_theme_file_uri( '/assets/js/editor.js' ), array( 'wp-blocks', 'wp-dom' ), wp_get_theme()->get( 'Version' ), true );
 }
 
 add_action( 'enqueue_block_editor_assets', 'segesone_block_editor_script' );
-
-/**
- * Enqueues non-latin language styles.
- */
-function seges_one_non_latin_languages() {
-	$custom_css = seges_one_get_non_latin_css( 'front-end' );
-
-	if ( $custom_css ) {
-		wp_add_inline_style( 'seges-one-style', $custom_css );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'seges_one_non_latin_languages' );
 
 // SVG Icons class.
 require get_template_directory() . '/classes/class-seges-one-svg-icons.php';
 
 // Custom color classes.
 require get_template_directory() . '/classes/class-seges-one-custom-colors.php';
-new seges_one_Custom_Colors();
+new seges_One_Custom_Colors();
 
 // Enhance the theme by hooking into WordPress.
 require get_template_directory() . '/inc/template-functions.php';
@@ -406,7 +360,7 @@ require get_template_directory() . '/inc/template-tags.php';
 
 // Customizer additions.
 require get_template_directory() . '/classes/class-seges-one-customize.php';
-new seges_one_Customize();
+new seges_One_Customize();
 
 // Block Patterns.
 require get_template_directory() . '/inc/block-patterns.php';
@@ -416,11 +370,9 @@ require get_template_directory() . '/inc/block-styles.php';
 
 // Dark Mode.
 require_once get_template_directory() . '/classes/class-seges-one-dark-mode.php';
-new seges_one_Dark_Mode();
+new seges_One_Dark_Mode();
 
-/**
- * Enqueues scripts for the customizer preview.
- */
+/* Enqueues scripts for the customizer preview. */
 function segesone_customize_preview_init() {
 	wp_enqueue_script(
 		'segesone-customize-helpers',
@@ -440,9 +392,7 @@ function segesone_customize_preview_init() {
 }
 add_action( 'customize_preview_init', 'segesone_customize_preview_init' );
 
-/**
- * Enqueues scripts for the customizer.
- */
+/* Enqueues scripts for the customizer. */
 function segesone_customize_controls_enqueue_scripts() {
 
 	wp_enqueue_script(
@@ -455,13 +405,9 @@ function segesone_customize_controls_enqueue_scripts() {
 }
 add_action( 'customize_controls_enqueue_scripts', 'segesone_customize_controls_enqueue_scripts' );
 
-/**
- * Calculates classes for the main <html> element.
- */
+/* Calculates classes for the main <html> element. */
 function segesone_the_html_classes() {
-	/**
-	 * Filters the classes for the main <html> element.
-	 */
+	/* Filters the classes for the main <html> element. */
 	$classes = apply_filters( 'segesone_html_classes', '' );
 	if ( ! $classes ) {
 		return;
@@ -469,24 +415,9 @@ function segesone_the_html_classes() {
 	echo 'class="' . esc_attr( $classes ) . '"';
 }
 
-/**
- * Adds "is-IE" class to body if the user is on Internet Explorer.
- */
-function segesone_add_ie_class() {
-	?>
-	<script>
-	if ( -1 !== navigator.userAgent.indexOf( 'MSIE' ) || -1 !== navigator.appVersion.indexOf( 'Trident/' ) ) {
-		document.body.classList.add( 'is-IE' );
-	}
-	</script>
-	<?php
-}
-add_action( 'wp_footer', 'segesone_add_ie_class' );
 
 if ( ! function_exists( 'wp_get_list_item_separator' ) ) :
-	/**
-	 * Retrieves the list item separator based on the locale.
-	 */
+	/* Retrieves the list item separator based on the locale. */
 	function wp_get_list_item_separator() {
 		/* translators: Used between list items, there is a space after the comma. */
 		return __( ', ', 'segesone' );
