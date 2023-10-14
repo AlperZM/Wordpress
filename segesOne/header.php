@@ -1,11 +1,26 @@
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-    <head>
-        <meta charset="<?php bloginfo( 'charset' ); ?>" />
-        <title><?php wp_title(); ?></title>
-        <link rel="profile" href="http://gmpg.org/xfn/11" />
-        <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-        <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
-   <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-        <?php wp_head(); ?>
-    </head>
+<?php
+/* This is the template that displays all of the <head> section and everything up until main. */
+?>
+<!doctype html>
+<html <?php language_attributes(); ?> <?php segesone_the_html_classes(); ?>>
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<?php wp_head(); ?>
+</head>
+
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">
+		<?php
+		/* translators: Hidden accessibility text. */
+		esc_html_e( 'Skip to content', 'segesone' );
+		?>
+	</a>
+
+	<?php get_template_part( 'template-parts/header/site-header' ); ?>
+
+	<div id="content" class="site-content">
+		<div id="primary" class="content-area">
+			<main id="main" class="site-main">
