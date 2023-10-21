@@ -1,45 +1,48 @@
 <?php
 /**
- * The template for displaying all single posts and attachments
-
+ * The template for displaying all single posts
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
+ * @package Seges_One
  */
- 
-get_header(); ?>
- 
-    <div id="primary" class="content-area">
-        <main id="main" class="site-main" role="main">
- 
-        <?php
-        // Start the loop.
-        while ( have_posts() ) : the_post();
- 
-            /*
-             * Include the post format-specific template for the content. If you want to
-             * use this in a child theme, then include a file called called content-___.php
-             * (where ___ is the post format) and that will be used instead.
-             */
-            get_template_part( 'content', get_post_format() );
- 
-            // If comments are open or we have at least one comment, load up the comment template.
-            if ( comments_open() || get_comments_number() ) :
-                comments_template();
-            endif;
- 
-            // Previous/next post navigation.
-            the_post_navigation( array(
-                'next_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Next', 'twentyfifteen' ) . '</span> ' .
-                    '<span class="screen-reader-text">' . __( 'Next post:', 'twentyfifteen' ) . '</span> ' .
-                    '<span class="post-title">%title</span>',
-                'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Previous', 'twentyfifteen' ) . '</span> ' .
-                    '<span class="screen-reader-text">' . __( 'Previous post:', 'twentyfifteen' ) . '</span> ' .
-                    '<span class="post-title">%title</span>',
-            ) );
- 
-        // End the loop.
-        endwhile;
-        ?>
- 
-        </main><!-- .site-main -->
-    </div><!-- .content-area -->
- 
-<?php get_footer(); ?>
+
+get_header();
+?>
+
+	<main id="primary" class="site-main">
+<?php
+
+// Özelleştirici ayarlarını alın
+$my_section_title = get_theme_mod('my_section_title');
+
+// Bölüm başlığını görüntüleyin
+echo $my_section_title;
+
+?>
+		<?php
+		while ( have_posts() ) :
+			the_post();
+
+			get_template_part( 'template-parts/content', get_post_type() );
+
+			the_post_navigation(
+				array(
+					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'seges-one' ) . '</span> <span class="nav-title">%title</span>',
+					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'seges-one' ) . '</span> <span class="nav-title">%title</span>',
+				)
+			);
+
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
+
+		endwhile; // End of the loop.
+		?>
+
+	</main><!-- #main -->
+
+<?php
+get_sidebar();
+get_footer();
